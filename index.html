@@ -378,6 +378,12 @@
   .chip { background: none; border: 1px solid var(--line); padding: .45rem 1.1rem; border-radius: 2px; font-size: .92rem; font-weight: 500; color: var(--muted); cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
   .chip:hover { color: var(--text); border-color: var(--brass); }
   .chip[aria-pressed="true"] { background: var(--brass); color: var(--bg); border-color: var(--brass); }
+  .fab.lang { bottom: 4.5rem; font-weight: 700; font-size: .85rem; font-family: var(--ui); letter-spacing: .04em; }
+  .bsb { margin: 0; } .bsb svg { width: 100%; height: auto; display: block; border: 1px solid var(--line); }
+  .sunl { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; margin-top: .9rem; color: var(--muted); font-size: .92rem; }
+  .sunl input { accent-color: var(--brass); width: min(320px, 100%); }
+  .bsb figcaption { margin-top: .6rem; color: var(--muted); font-family: var(--serif); font-style: italic; }
+  .portrait-row { grid-template-columns: 1fr; }
 </style>
 </head>
 <body class="loading no-js">
@@ -420,6 +426,7 @@
   </div>
 </header>
 
+<button class="fab lang" id="langFab" type="button" aria-label="Switch to English">EN</button>
 <button class="fab" id="themeFab" type="button" aria-label="Mudar tema"><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
 <main id="topo">
 
@@ -437,7 +444,7 @@
           <p class="typed" aria-live="off">Compromisso com <b id="typed"></b><span class="tcaret" aria-hidden="true"></span></p>
           <div class="actions">
             <a class="btn btn-primary" href="#contato" data-magnetic>Fazer um requerimento</a>
-            <a class="btn btn-ghost" href="#artigo" data-magnetic>Ler meu artigo</a>
+            <a class="btn btn-ghost" href="#" data-cv="open" data-magnetic>Abrir currículo</a>
           </div>
           <div class="hero-meta">
             <span class="live"><i aria-hidden="true"></i>Em busca de estágio jurídico</span>
@@ -511,11 +518,6 @@
         <li class="inciso rv" style="--d:.2s"><span class="rn">III</span><strong>Comprometimento</strong></li>
       </ol>
       <div class="portrait-row rv">
-        <div>
-          <figure class="portrait" id="portrait" style="margin:0"><span class="mono" aria-hidden="true">JP</span><img id="pimg" alt="Retrato de João Pedro Echamende"></figure>
-          <div class="pbtns"><button type="button" id="padd">Adicionar foto</button><button type="button" id="pdel" hidden>Remover</button></div>
-          <input type="file" id="pfile" accept="image/*" hidden>
-        </div>
         <div class="req">
           <h3>Do requerente</h3>
           <dl>
@@ -678,6 +680,23 @@
     </div>
   </section>
 
+  <section class="sec alt" id="capital">
+    <div class="wrap">
+      <div class="art-head"><h2 class="mask"><span><span class="art-no">Art. 5º-A</span> Da capital</span></h2><div class="art-rule"></div></div>
+      <figure class="bsb rv">
+        <svg viewBox="0 0 600 230" role="img" aria-label="Silhueta do Congresso Nacional, em Brasília, sob o céu do Cerrado">
+          <defs><linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1"><stop id="s1" offset="0" stop-color="#5BA3D9"/><stop id="s2" offset="1" stop-color="#BFE0F2"/></linearGradient></defs>
+          <rect width="600" height="230" fill="url(#skyG)"/>
+          <circle id="sun" cx="300" cy="60" r="20" fill="#FFF3C4"/>
+          <g fill="#0A2620"><rect y="196" width="600" height="34"/><rect x="110" y="170" width="380" height="26"/><path d="M150 170A45 45 0 0 1 240 170Z"/><path d="M355 140H455A50 32 0 0 1 355 140Z"/><rect x="258" y="48" width="22" height="124"/><rect x="320" y="48" width="22" height="124"/><rect x="278" y="150" width="42" height="22"/></g>
+        </svg>
+        <label class="sunl">Arraste para mover o sol sobre a Esplanada <input type="range" id="sunR" min="0" max="100" value="50"></label>
+        <figcaption>Congresso Nacional, no Eixo Monumental. Brasília foi inaugurada em 1960 e é Patrimônio Mundial da UNESCO desde 1987.</figcaption>
+      </figure>
+      <p class="par rv"><b>Parágrafo único.</b> Estudo e busco estágio em Brasília, sede dos Três Poderes da República.</p>
+    </div>
+  </section>
+
   <!-- ART. 6º -->
   <section class="sec contact" id="contato">
     <div class="wrap">
@@ -696,7 +715,9 @@
         <button class="btn btn-primary" id="copyBtn" type="button" data-magnetic>Copiar e-mail</button>
         <a class="btn btn-ghost" href="https://wa.me/5561982116938" target="_blank" rel="noopener" data-magnetic>WhatsApp</a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/jo%C3%A3o-pedro-echamende" target="_blank" rel="noopener" data-magnetic>LinkedIn</a>
-        <a class="btn btn-ghost" href="#artigo" data-magnetic>Artigo científico</a>
+        <a class="btn btn-ghost" href="#" data-cv="open" data-magnetic>Abrir currículo</a>
+        <a class="btn btn-ghost" href="#" data-cv="save" data-magnetic>Baixar PDF</a>
+        <a class="btn btn-ghost" href="#artigo" data-magnetic>Ler artigo</a>
         <span class="copy-ok" id="copyOk" role="status" aria-live="polite"></span>
       </div>
 
@@ -944,7 +965,7 @@
   var copyBtn = $('#copyBtn'), copyOk = $('#copyOk'), email = 'joaoribeiroechamende7@gmail.com';
   copyBtn.addEventListener('click', function () {
     function ok() {
-      copyOk.textContent = 'E-mail copiado!'; copyOk.classList.add('show');
+      copyOk.textContent = lang === 'en' ? 'Email copied!' : 'E-mail copiado!'; copyOk.classList.add('show');
       setTimeout(function () { copyOk.classList.remove('show'); }, 2200);
     }
     function fallback() {
@@ -959,6 +980,7 @@
   });
 
   $('#toTop').addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
+  var lang = 'pt';
   /* ---------- Tema claro/escuro ---------- */
   var root = document.documentElement, fab = $('#themeFab'), metaT = $('meta[name="theme-color"]');
   function setTheme(v, save) {
@@ -970,38 +992,12 @@
   setTheme(root.getAttribute('data-theme') || 'dark', false);
   fab.addEventListener('click', function () { setTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light', true); });
 
-  /* ---------- Retrato (a foto fica só neste navegador) ---------- */
-  var port = $('#portrait'), pimg = $('#pimg'), pfile = $('#pfile'), padd = $('#padd'), pdel = $('#pdel');
-  function showPhoto(s) { pimg.src = s; port.classList.add('has'); pdel.hidden = false; padd.textContent = 'Trocar foto'; }
-  try { var sp = localStorage.getItem('jp-foto'); if (sp) showPhoto(sp); } catch (e) {}
-  padd.addEventListener('click', function () { pfile.click(); });
-  pfile.addEventListener('change', function () {
-    var f = pfile.files[0]; if (!f) return;
-    var r = new FileReader();
-    r.onload = function () {
-      var im = new Image();
-      im.onload = function () {
-        var s = Math.min(1, 900 / Math.max(im.width, im.height)), c = document.createElement('canvas');
-        c.width = Math.round(im.width * s); c.height = Math.round(im.height * s);
-        c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
-        var d = c.toDataURL('image/jpeg', .88); showPhoto(d);
-        try { localStorage.setItem('jp-foto', d); } catch (e) {}
-      };
-      im.src = r.result;
-    };
-    r.readAsDataURL(f);
-  });
-  pdel.addEventListener('click', function () {
-    port.classList.remove('has'); pimg.removeAttribute('src'); pdel.hidden = true; padd.textContent = 'Adicionar foto'; pfile.value = '';
-    try { localStorage.removeItem('jp-foto'); } catch (e) {}
-  });
-
   /* ---------- Atividades: filtro por área ---------- */
   var acts = $$('.act'), aCount = $('#actCount');
   function renderActs() {
     var n = 0;
     acts.forEach(function (a) { if (!a.classList.contains('off')) { $('.l', a).textContent = String.fromCharCode(96 + (++n)) + ')'; } });
-    aCount.textContent = 'Exibindo ' + n + ' de ' + acts.length + ' atividades';
+    aCount.textContent = lang === 'en' ? 'Showing ' + n + ' of ' + acts.length + ' activities' : 'Exibindo ' + n + ' de ' + acts.length + ' atividades';
   }
   renderActs();
   $$('[data-a]').forEach(function (b) {
@@ -1018,15 +1014,82 @@
   absBtn.addEventListener('click', function () {
     var o = abs.classList.toggle('open');
     absBtn.setAttribute('aria-expanded', o ? 'true' : 'false');
-    absBtn.textContent = o ? 'Recolher resumo' : 'Ler resumo completo';
+    absBtn.textContent = lang === 'en' ? (o ? 'Collapse abstract' : 'Read full abstract') : (o ? 'Recolher resumo' : 'Ler resumo completo');
   });
   var cit = 'ECHAMENDE, João Pedro Ribeiro. Federalismo legislativo e saúde mental feminina: a regulação das redes sociais pode ampliar direitos das mulheres jovens? 2026. Artigo científico.';
   $('#citBtn').addEventListener('click', function () {
     var ok = $('#citOk');
-    function done() { ok.textContent = 'Citação copiada!'; ok.classList.add('show'); setTimeout(function () { ok.classList.remove('show'); }, 2200); }
+    function done() { ok.textContent = lang === 'en' ? 'Citation copied!' : 'Citação copiada!'; ok.classList.add('show'); setTimeout(function () { ok.classList.remove('show'); }, 2200); }
     function fb() { var ta = document.createElement('textarea'); ta.value = cit; ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); done(); } catch (e) {} document.body.removeChild(ta); }
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(cit).then(done, fb); else fb();
   });
+
+  /* ---------- Currículo (PDF embutido) ---------- */
+  var CV_B64 = "JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUgo+PgplbmRvYmoKMiAwIG9iago8PAovQmFzZUZvbnQgL0hlbHZldGljYSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvTmFtZSAvRjEgL1N1YnR5cGUgL1R5cGUxIC9UeXBlIC9Gb250Cj4+CmVuZG9iagozIDAgb2JqCjw8Ci9CYXNlRm9udCAvSGVsdmV0aWNhLUJvbGQgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YyIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKNCAwIG9iago8PAovQSA8PAovUyAvVVJJIC9UeXBlIC9BY3Rpb24gL1VSSSAoaHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2pvJUMzJUEzby1wZWRyby1lY2hhbWVuZGUpCj4+IC9Cb3JkZXIgWyAwIDAgMCBdIC9SZWN0IFsgMjI0Ljc4NyA3NDEuMTM1NCA0MTEuNjgwNSA3NTIuNTM1NCBdIC9TdWJ0eXBlIC9MaW5rIC9UeXBlIC9Bbm5vdAo+PgplbmRvYmoKNSAwIG9iago8PAovQW5ub3RzIFsgNCAwIFIgXSAvQ29udGVudHMgOSAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA4IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAKICAvVHJhbnMgPDwKCj4+IC9UeXBlIC9QYWdlCj4+CmVuZG9iago2IDAgb2JqCjw8Ci9QYWdlTW9kZSAvVXNlTm9uZSAvUGFnZXMgOCAwIFIgL1R5cGUgL0NhdGFsb2cKPj4KZW5kb2JqCjcgMCBvYmoKPDwKL0F1dGhvciAoSm9cMzQzbyBQZWRybyBSaWJlaXJvIEVjaGFtZW5kZSkgL0NyZWF0aW9uRGF0ZSAoRDoyMDI2MTAxMTAxNTIyNCswMCcwMCcpIC9DcmVhdG9yIChcKHVuc3BlY2lmaWVkXCkpIC9LZXl3b3JkcyAoKSAvTW9kRGF0ZSAoRDoyMDI2MTAxMTAxNTIyNCswMCcwMCcpIC9Qcm9kdWNlciAoUmVwb3J0TGFiIFBERiBMaWJyYXJ5IC0gXChvcGVuc291cmNlXCkpIAogIC9TdWJqZWN0IChcKHVuc3BlY2lmaWVkXCkpIC9UaXRsZSAoQ3VyclwzNTVjdWxvIC0gSm9cMzQzbyBQZWRybyBSaWJlaXJvIEVjaGFtZW5kZSkgL1RyYXBwZWQgL0ZhbHNlCj4+CmVuZG9iago4IDAgb2JqCjw8Ci9Db3VudCAxIC9LaWRzIFsgNSAwIFIgXSAvVHlwZSAvUGFnZXMKPj4KZW5kb2JqCjkgMCBvYmoKPDwKL0ZpbHRlciBbIC9BU0NJSTg1RGVjb2RlIC9GbGF0ZURlY29kZSBdIC9MZW5ndGggMTgyMQo+PgpzdHJlYW0KR2F1SEw5bG8jWiZBQHNCb1Q8dENaOjpKLVZcTD0lOGY/Wy45KHAsNSRqLlBAZFpCVSwuOUN1cnAuLTtvSnJPLzRiI0tROEJqU1IrRG45LXNUXTcrQzUwIXNwLVxCTlchbFRWJiRIMUBETGkrPmtjRyNwNWVXbC9nM00sMUFFI2hgXDojIVBebj9jTWxRRXJBUEpRLlFlbTBQQ1khLS1QQCMjV1JPOiFMJU1aXTQuQyQrKWwsN10oJjVpJUY0JiM7P1FKNiY9RGFwUU9KRkRMOTIpTG41YWMkU0psK19qTEc+XktrajRgbm40IWJxOjRjaTJLKilDOSNXc1U3JlVFP0FJKm8xYE1qaypITVE0X2YyOG0lNmwiRjBxNCZiPyw8SyRPTzQ9JmcnL106TmVhbjxLXSImSjRNSENwNiYiQTFOKF8iLE8jMTswS1hsVFllNEZMLlApQGdLajtZSk1dJWpwTSY0PiYzaCZ0Zk8tKHU2cFsxXml0aVRXOVokLkNDUVUxY1xTNUFQOS81RyJuLS9wVmQ9LFkiWUJNTWpLYTg5JUtdVzVAQnFIUiE+YGRHQVw9L2c3KFk8OTEvSWtBcTJnP2RUXy5fMCghUCp0RTJlUmwxMUxKNCtILzVja0xBR2c1Q2RvJ2tbQj1yXGVxVG1iWzQ6WyZxPHJHL0dvTmk8b25fRGcoUSw1VEdVUU1PJlw2J2Z0OzdqWCNRIWBGLSYzYi9xcigvYyNjX1QyOWc6aVsqaSpoSEtaUU5BS0JrWm1bSDgxSzItPDYwYVBJO1kvWVFxSzBxPWlObSZqKV9qa0EqSG4wOTIoQEpNcG0hSiVtOHRmTUopSSpLcGEvXiMwIkdnXGsiMV8wKmRVX0ZTYSh1Ki03VjAwMDhwQ2kwJG4qTzxwIjlRa21MaGlgMidXRWo9JjxLZDllWihNUXEvK1R1LC0rOjMnOzxuNm9BYlZAbEw3R2Q5a2xiVGdvQSwxKWUnJm4tNmhULXMzNU9BNUA/dT0vNzVHbyZzbzYwVEtVJ2UlZDsvam0zaDMpJy44ZGI/Vm5nMEo7Y2UiSUs3Q1MuTld1SEhOTic3czpsQWZZRm9yMy0lMz5TWSIpWCp1b180KmxATFY1YmBsW2lZJTc1TFdHSDxgNHNNX1l1XkFATWlmPWxGRywxJEBsLWZQUk9gaTFbRHQ3NjZHRmZtOGpkLS0qXUNLYFx1bWo/WFBSKVM0bGIjZkBnNF9xPUBybVspbzJpI1ZzYHFLSUJJTiluNFxtLDVTWVhSMGBfaDp1W1Jbcj5CS1hhN1FbNyZvOmlBUDpxKmJWIjY2Q0lERU8vKklGdWxnK1UzNENPb29GIi9Xb0QkaDMtITFnSy5VWXIzSCZNPjR0bDI0ZDRjdFQvS0A5NidtTmRENXJFOi8tPFE2SSFrKi5mOEIoLjRKTzlJQURBZkRHUFxtS2R0M11bb0UvYUxlSG9QSnNEb2lNUi9rT1hzQ0gvWHE3SVE9IiIwTHA4cUIjLWUpNG1sRzI1TD8xRm4yYVNQR0UmJT4sbmx0ZjlrK3IvWDNcTDk/LlRUaDlhJ1xYNyZCRGRrU3IhXW9FKUlQNE0oQjdzVmBBVzdRSmJjcUdDcSFKYCsqcWFPSywhRE5kSTljTD5IMTApVEhQKk9uTkI0cyVPZF0tUDVMaiklS0pYJS1cUD4iSylYOyk0QFdeayNnZjM5c0UoYC5LNHEyaW4uOyxNTltPP0VJcVU0QCppRD8oZVwmZmRwajhkRV0qMl9vMVlKdDRGSmREKyRVSk9gMlhNQzlaXEhIaVkwRFQyZG1gZkxpMGJiKSZmR3ApalNAMWJvYXBFWlBzMFhcOWhgP2gqVCJjMzleNz5MUEU5UVxBSmVLVS4zViVBUVcuNWg+NCVHZ1I8RVknXDVPMFdNP2Y6bl8pSDJtR2xXJWRTcHFrZzE5Viw0aFhiXUE2ZUZDTE5DLyhBISZQYTlXKjleSWNvSTksNmkyWkkrQ1VfcElvTj85LHE1NVQ/LyJtaUBNMSNQajI3OE5mVHI7PlNQNUdjYDUuVGJGRSgmM0NXcGgqY0RKalJqVj8wWCF0PCkuJk89MGhWSDA3UE1aW2JfT2ZZIzE7QjxVVjxSR0xKJz9WXlBMRipLXzdRLGUxSEY3ZmtoZVdePyo/WFgqUixNRDBxQydzMDRQXDxBXz1QaDAtXS9zYlw1Yi86TEc0KEUrVDI0VUZDXUdtJyRccT5dVFtnZU5vM0QwS0BnaCRzQzs4QSpGK2ZjPC9NRlQnY0gsVXQlX2pZYlU4OWtLQUhiIiUmPUQjUChqczNMaW5ra2xabmVNXGVxTnFoIS5gZCksVkxvUWRIZio6bDVWZkI2Oz5nQS43TVJAbk8lTVQjRHBSQihsWToyc2ctWjVfRCY4Y1FYOWNNZHBtL0syTX4+ZW5kc3RyZWFtCmVuZG9iagp4cmVmCjAgMTAKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDYxIDAwMDAwIG4gCjAwMDAwMDAxMDIgMDAwMDAgbiAKMDAwMDAwMDIwOSAwMDAwMCBuIAowMDAwMDAwMzIxIDAwMDAwIG4gCjAwMDAwMDA1MjUgMDAwMDAgbiAKMDAwMDAwMDc0NiAwMDAwMCBuIAowMDAwMDAwODE0IDAwMDAwIG4gCjAwMDAwMDExNDUgMDAwMDAgbiAKMDAwMDAwMTIwNCAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9JRCAKWzxjYzQ3NDVlOTZjNTM0ZTI3NDQ2M2NiMmNjYjg4YmMzYj48Y2M0NzQ1ZTk2YzUzNGUyNzQ0NjNjYjJjY2I4OGJjM2I+XQolIFJlcG9ydExhYiBnZW5lcmF0ZWQgUERGIGRvY3VtZW50IC0tIGRpZ2VzdCAob3BlbnNvdXJjZSkKCi9JbmZvIDcgMCBSCi9Sb290IDYgMCBSCi9TaXplIDEwCj4+CnN0YXJ0eHJlZgozMTE2CiUlRU9GCg==";
+  function cvUrl() {
+    var bin = atob(CV_B64), u = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+    return URL.createObjectURL(new Blob([u], { type: 'application/pdf' }));
+  }
+  $$('[data-cv]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var url = cvUrl(), save = a.getAttribute('data-cv') === 'save';
+      if (!save && window.open(url, '_blank')) return;
+      var d = document.createElement('a'); d.href = url; d.download = 'Curriculo_Joao_Pedro_Echamende.pdf';
+      document.body.appendChild(d); d.click(); document.body.removeChild(d);
+    });
+  });
+
+  /* ---------- Português (principal) e inglês ---------- */
+  var EN = {"Objetivo": "Objective", "Formação": "Education", "Atividades": "Activities", "Artigo": "Article", "Capacitações": "Training", "Informática": "IT", "Habilidades": "Skills", "Contato": "Contact", "Autuando portfólio": "Filing portfolio", "fls.": "p.", "Estudante de Direito no CEUB": "Law student at CEUB", "Compromisso com": "Committed to", "Fazer um requerimento": "Make a request", "Abrir currículo": "Open résumé", "Baixar PDF": "Download PDF", "Ler artigo": "Read article", "Em busca de estágio jurídico": "Looking for a legal internship", "Conclusão prevista: dez/2029": "Expected graduation: Dec 2029", "Teoria e prática em equilíbrio. Mova o mouse para inclinar a balança.": "Theory and practice in balance. Move your mouse to tip the scale.", "Sala de aula": "Classroom", "Prática": "Practice", "Do objetivo": "Objective", "Da formação": "Education", "Das atividades": "Activities", "Do artigo científico": "Scientific article", "Das capacitações": "Training", "Dos idiomas e da informática": "Languages and IT", "Das habilidades": "Skills", "Da capital": "The capital", "Do requerimento": "Request", "Art. 1º": "Art. 1", "Art. 2º": "Art. 2", "Art. 2º-A": "Art. 2-A", "Art. 2º-B": "Art. 2-B", "Art. 3º": "Art. 3", "Art. 4º": "Art. 4", "Art. 5º": "Art. 5", "Art. 5º-A": "Art. 5-A", "Art. 6º": "Art. 6", "Ética": "Ethics", "Responsabilidade": "Responsibility", "Comprometimento": "Commitment", "Do requerente": "Applicant", "Nome": "Name", "Curso": "Course", "Direito, 4º período": "Law, 4th semester", "Instituição": "Institution", "Interesse": "Interest", "Estágio na área jurídica": "Legal internship", "Bacharelado em Direito": "Bachelor of Laws", "Brasília, DF": "Brasília, DF", "4º": "4th", "período": "semester", "conclusão prevista": "expected graduation", "(dezembro)": "(December)", "Parágrafo único.": "Sole paragraph.", "Conclusão prevista para dezembro de 2029.": "Expected graduation in December 2029.", "Descrição das atividades de apoio administrativo, em rotinas de locação e frota.": "Administrative support activities in rental and fleet routines.", "Todas": "All", "Contratos": "Contracts", "Cadastro e arquivo": "Records and filing", "Financeiro": "Finance", "Atendimento": "Customer service", "Frota": "Fleet", "Apoiar o controle e organização de contratos de locação, aditivos e distratos": "Support the control and organization of rental contracts, amendments and terminations", "Auxiliar no cadastro de clientes, conferência de documentos e atualização de sistemas internos": "Assist with customer registration, document checks and internal system updates", "Realizar lançamentos administrativos básicos (recebimentos, controles internos, planilhas e relatórios)": "Handle basic administrative entries (receipts, internal controls, spreadsheets and reports)", "Apoiar o controle de vencimentos de locações, semanais e renovações contratuais": "Support the tracking of rental due dates, weekly rentals and contract renewals", "Auxiliar no atendimento administrativo a clientes, parceiros e fornecedores (presencial, telefone ou WhatsApp)": "Assist with administrative service to customers, partners and suppliers (in person, phone or WhatsApp)", "Organizar arquivos físicos e digitais": "Organize physical and digital files", "Apoiar o controle de multas de trânsito, notificações e documentos veiculares": "Support the control of traffic fines, notices and vehicle documents", "Auxiliar no controle de entrada e devolução de cauções": "Assist with tracking security deposits received and returned", "Dar suporte às rotinas financeiras simples, como conferência de comprovantes e envio para o setor responsável": "Support simple financial routines, such as checking receipts and forwarding them to the responsible department", "Apoiar demandas administrativas relacionadas à frota (documentos, checklists, agenda de manutenção)": "Support fleet-related administrative tasks (documents, checklists, maintenance schedule)", "Saúde mental feminina": "Women's mental health", "Redes sociais": "Social media", "Competência concorrente": "Concurrent competence", "Distrito Federal": "Federal District", "Direitos fundamentais": "Fundamental rights", "Hipótese confirmada": "Hypothesis confirmed", "O federalismo legislativo atua como mecanismo de atualização protetiva.": "Legislative federalism works as a mechanism for updating protection.", "Maior potencial de efetividade material que o PL 329/2025, federal.": "Greater potential for material effectiveness than federal PL 329/2025.", "Base constitucional": "Constitutional basis", "Art. 196 e art. 24, XII, da Constituição Federal de 1988.": "Art. 196 and art. 24, XII, of the 1988 Federal Constitution.", "Ler resumo completo": "Read full abstract", "Copiar citação (ABNT)": "Copy citation (ABNT)", "Ver sumário do artigo": "View article contents (in Portuguese)", "Todas as capacitações": "All", "IA para Profissionais do Direito": "AI for Legal Professionals", "Microsoft Excel Intermediário": "Microsoft Excel (Intermediate)", "Introdução à Comunicação Não Violenta": "Introduction to Nonviolent Communication", "Workshop Internacional de Capacitações sobre o Racismo Antissemita e Extremismo": "International Training Workshop on Antisemitic Racism and Extremism", "Aula Magna com Cármen Lúcia: Violência Política de Gênero e Democracia: Desafios e Caminhos em Ano Eleitoral": "Aula Magna with Cármen Lúcia: Gender-Based Political Violence and Democracy: Challenges and Paths in an Election Year", "Curso ABNT": "ABNT Course", "Centro Universitário de Brasília": "Centro Universitário de Brasília (CEUB)", "Idiomas": "Languages", "Básico": "Basic", "Intermediário": "Intermediate", "Avançado": "Advanced", "Inglês": "English", "Intermediário / Avançado": "Intermediate / Advanced", "Pacote Office": "Microsoft Office", "Microsoft Excel": "Microsoft Excel", "Inteligência Artificial": "Artificial Intelligence", "Ferramentas de IA, com aplicação prática no Direito.": "AI tools, with practical application in Law.", "§ 1º": "§ 1", "§ 2º": "§ 2", "Responsabilidade e comprometimento": "Responsibility and commitment", "Cumprimento de prazos": "Meeting deadlines", "Organização": "Organization", "Facilidade de aprendizagem": "Quick learner", "Criatividade": "Creativity", "Trabalho em equipe": "Teamwork", "Comunicação interpessoal": "Interpersonal communication", "Ética profissional": "Professional ethics", "Arraste para mover o sol sobre a Esplanada": "Drag to move the sun over the Esplanada", "Congresso Nacional, no Eixo Monumental. Brasília foi inaugurada em 1960 e é Patrimônio Mundial da UNESCO desde 1987.": "National Congress, on the Monumental Axis. Brasília was inaugurated in 1960 and has been a UNESCO World Heritage Site since 1987.", "Estudo e busco estágio em Brasília, sede dos Três Poderes da República.": "I study and look for an internship in Brasília, seat of the Republic's Three Branches.", "Copiar e-mail": "Copy email", "Telefone": "Phone", "E-mail": "Email", "Localização": "Location", "Estudante de Direito, CEUB": "Law student, CEUB", "Fim dos autos · ©": "End of records · ©", "Voltar ao topo": "Back to top", "Exibindo": "Showing"}, SP = {"abs": "<b>Abstract.</b> This study examines the effect of social media on women's mental health, through the aesthetic pressure young women face online, and asks whether the exercise of concurrent legislative competence by the Federal District can broaden the protection of this fundamental right. The method combines an analysis of art. 196 and art. 24, XII, of the 1988 Federal Constitution with a survey and comparison of bills in progress in the National Congress and the Legislative Chamber of the Federal District. The results show that federal PL 329/2025 and district PL 580/2023 both recognize the psychological vulnerability of women and girls in digital dynamics, and that the district proposal goes further by addressing psychological violence more specifically, including cyberbullying and imposed beauty standards. The study concludes that legislative federalism lets the Federal District act in a complementary way, as a mechanism to update and strengthen the protection of young Brazilian women's fundamental rights in the age of algorithms.", "seal": "GRANTED<small>Legal internship</small>", "ln0": "To the Honorable Person in charge of selecting interns,", "ln1": "<b>João Pedro Ribeiro Echamende</b>, a 4th-semester Law student at Centro Universitário de Brasília (CEUB), in Brasília, DF, respectfully requests an internship opportunity in the legal field, in order to improve his professional development, building practical skills and deepening the knowledge gained in the classroom, with ethics, responsibility and commitment.", "ln2": "Therefore, he asks for approval.", "ln3": "Brasília, DF, <span id=\"dataLonga\"></span>.", "statement": "Legal intern seeking to improve professional development, building practical skills and deepening the knowledge gained in the classroom, with ethics, responsibility and commitment."}, WEN = ["ethics", "responsibility", "commitment", "meeting deadlines"], WPT = words.slice();
+  var langFab = $('#langFab');
+  var spSel = { abs: '#abs', seal: '.seal', ln0: '.sheet .ln:nth-of-type(1)', ln1: '.sheet .ln:nth-of-type(2)', ln2: '.sheet .ln:nth-of-type(3)', ln3: '.sheet .ln:nth-of-type(4)' };
+  function dateTxt() { $('#dataLonga').textContent = new Date().toLocaleDateString(lang === 'en' ? 'en-US' : 'pt-BR', { day: 'numeric', month: 'long', year: 'numeric' }); }
+  function setLang(l, save) {
+    lang = l; document.documentElement.lang = l === 'en' ? 'en' : 'pt-BR';
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT), n;
+    while ((n = w.nextNode())) {
+      if (/^(SCRIPT|STYLE)$/.test(n.parentNode.nodeName)) continue;
+      var raw = n._pt !== undefined ? n._pt : n.nodeValue, k = raw.trim().replace(/\s+/g, ' ');
+      if (!EN[k]) continue;
+      if (n._pt === undefined) n._pt = raw;
+      n.nodeValue = l === 'en' ? raw.replace(k, EN[k]) : n._pt;
+    }
+    Object.keys(spSel).forEach(function (key) {
+      var el = $(spSel[key]); if (!el) return;
+      if (el._pt === undefined) el._pt = el.innerHTML;
+      el.innerHTML = l === 'en' ? SP[key] : el._pt;
+    });
+    dateTxt();
+    var plain = st._pt !== undefined ? st._pt : stWords.join(' ');
+    st._pt = plain; st.textContent = ''; wEls.length = 0;
+    (l === 'en' ? SP.statement : plain).split(' ').forEach(function (x, i, arr) {
+      var s = document.createElement('span'); s.className = 'w'; s.textContent = x; st.appendChild(s);
+      if (i < arr.length - 1) st.appendChild(document.createTextNode(' '));
+      wEls.push(s);
+    });
+    words.splice.apply(words, [0, words.length].concat(l === 'en' ? WEN : WPT));
+    if (reduce) typedEl.textContent = l === 'en' ? 'ethics, responsibility and commitment' : 'ética, responsabilidade e comprometimento';
+    langFab.textContent = l === 'en' ? 'PT' : 'EN';
+    langFab.setAttribute('aria-label', l === 'en' ? 'Mudar para português' : 'Switch to English');
+    renderActs(); onScroll();
+    if (save) { try { localStorage.setItem('jp-lang', l); } catch (e) {} }
+  }
+  langFab.addEventListener('click', function () { setLang(lang === 'en' ? 'pt' : 'en', true); });
+  try { if (localStorage.getItem('jp-lang') === 'en') setLang('en', false); } catch (e) {}
+
+  /* ---------- Brasília: sol sobre a Esplanada ---------- */
+  var KEY = [['#F2A65A', '#FBE0B0'], ['#5BA3D9', '#BFE0F2'], ['#E0674A', '#F5B76A']];
+  function mix(a, b, f) { var o = '#'; for (var i = 1; i < 7; i += 2) { var v = Math.round(parseInt(a.substr(i, 2), 16) * (1 - f) + parseInt(b.substr(i, 2), 16) * f); o += (v < 16 ? '0' : '') + v.toString(16); } return o; }
+  function sky(p) {
+    var x = p / 50, i = x < 1 ? 0 : 1, f = x < 1 ? x : x - 1;
+    $('#s1').setAttribute('stop-color', mix(KEY[i][0], KEY[i + 1][0], f));
+    $('#s2').setAttribute('stop-color', mix(KEY[i][1], KEY[i + 1][1], f));
+    $('#sun').setAttribute('cx', 40 + p * 5.2); $('#sun').setAttribute('cy', 165 - Math.sin(p / 100 * Math.PI) * 120);
+  }
+  $('#sunR').addEventListener('input', function (e) { sky(+e.target.value); });
+  sky(50);
 
 })();
 </script>
